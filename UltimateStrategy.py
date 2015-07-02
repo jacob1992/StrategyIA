@@ -4,7 +4,7 @@ from UltimateStrat.Executor.CoachExecutor import CoachExecutor
 from UltimateStrat.Executor.PlayExecutor import PlayExecutor
 from UltimateStrat.Executor.TacticExecutor import TacticExecutor
 from UltimateStrat.Executor.SkillExecutor import SkillExecutor
-import UltimateStrat.Router as Router
+import UltimateStrat.Hub as Hub
 import sys, time
 
 __author__ = 'jbecirovski'
@@ -15,18 +15,18 @@ class UltimateStrategy(Strategy):
 
         # Create InfoManager
         self.team.is_team_yellow = is_team_yellow
-        Router.initialize(field, team, opponent_team)
+        Hub.initialize(field, team, opponent_team)
 
         # Create Executors
-        self.ex_coach = CoachExecutor(Router)
-        self.ex_play = PlayExecutor(Router)
-        self.ex_tactic = TacticExecutor(Router)
-        self.ex_skill = SkillExecutor(Router)
+        self.ex_coach = CoachExecutor()
+        self.ex_play = PlayExecutor()
+        self.ex_tactic = TacticExecutor()
+        self.ex_skill = SkillExecutor()
 
 
     def on_start(self):
 
-        Router.update()
+        Hub.update()
         # Main Strategy sequence
         self.ex_coach.exec()
         self.ex_play.exec()
@@ -35,7 +35,7 @@ class UltimateStrategy(Strategy):
 
         # send command
         for i in range(6):
-            self._send_command(Command.MoveToAndRotate(self.team.players[i], self.team, Router.getPlayerNextPose(i)))
+            self._send_command(Command.MoveToAndRotate(self.team.players[i], self.team, Hub.getPlayerNextPose(i)))
 
     def on_halt(self):
         self.on_start()

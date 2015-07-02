@@ -1,4 +1,5 @@
 from UltimateStrat.Executor.Executor import Executor
+import UltimateStrat.Hub as Hub
 
 __author__ = 'jbecirovski'
 
@@ -13,26 +14,26 @@ class SkillExecutor(Executor):
     5 - generate next pose
     6 - set next pose
     """
-    def __init__(self, info_manager):
-        Executor.__init__(self, info_manager)
+    def __init__(self):
+        Executor.__init__(self)
 
     def exec(self):
         # Execution for each players
-        for id_player in range(self.info_manager.getCountPlayer()):
+        for id_player in range(Hub.getCountPlayer()):
             # 1 - what's player skill ?
-            current_skill = self.info_manager.getPlayerSkill(id_player)
+            current_skill = Hub.getPlayerSkill(id_player)
 
             # 2 - what's player target ?
-            current_target = self.info_manager.getPlayerTarget(id_player)
+            current_target = Hub.getPlayerTarget(id_player)
 
             # 3 - what's player goal ?
-            current_goal = self.info_manager.getPlayerGoal(id_player)
+            current_goal = Hub.getPlayerGoal(id_player)
 
             # 4 - get skill object
             skill = self.skill_book[current_skill]
 
             # 5 - generate next pose
-            next_pose = skill().act(self.info_manager.getPlayerPose(id_player), current_target, current_goal)
+            next_pose = skill().act(Hub.getPlayerPose(id_player), current_target, current_goal)
 
             # 6 - set next pose
-            self.info_manager.setPlayerNextPose(id_player, next_pose)
+            Hub.setPlayerNextPose(id_player, next_pose)

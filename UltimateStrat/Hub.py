@@ -4,7 +4,7 @@ import sys
 __author__ = 'jbecirovski'
 
 
-class Router(object):
+class Hub(object):
     """
     InfoManager is a simple question answerer and setter.
     """
@@ -23,7 +23,7 @@ class Router(object):
         self.registered_function[function.__name__] = function
         return function
 
-sys.modules[__name__] = Router()
-sys.modules["Router"] = sys.modules[__name__]
+sys.modules[__name__] = Hub()
+sys.modules["Hub"] = sys.modules[__name__]
 
-from UltimateStrat.router_plugins import *
+from UltimateStrat.hub_plugins import *
