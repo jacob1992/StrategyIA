@@ -1,10 +1,7 @@
-#import sys
-#sys.path.append(".")
 from PythonFramework.Framework import start_game
-from UltimateStrategy import UltimateStrategy
+from ExampleStrategy import ExampleStrategy
 
-__author__ = 'jbecirovski'
+__author__ = 'jbecirovski and felixpelletier23'
 
 if __name__ == '__main__':
-    start_game(UltimateStrategy)
-
+    start_game(ExampleStrategy)
