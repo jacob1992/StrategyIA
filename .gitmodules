@@ -1,1 +1,5 @@
 
+[submodule "RULEngine-feature-gui"]
+	path = RULEngine
+	url = https://github.com/RoboCupULaval/RULEngine.git
+	branch = feature-gui
