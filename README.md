@@ -8,6 +8,10 @@ Keys Q, W, E, R, T, Y: Select robots on the blue team.
 
 The D key toggles the debug mode. When the debug mode is off, you can't move the robots or the ball.
 
+The S key toggles showing each robot's ID numbers.
+
+The C key toggles showing each robot's debug circle.
+
 
 Left click moves the ball.
 
